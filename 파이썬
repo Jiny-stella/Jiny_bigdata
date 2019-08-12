@@ -1,0 +1,125 @@
+# 02-1_숫자형
+
+print(12)
+
+#표준 입출력
+#표준 입력 : 변수 = Input("문자열")
+
+# a= input()
+# print(a)
+#
+# math = input("수학점수:")    # str(문자열)타입을 반환
+# english = input("영어점수:")    # str(문자열)타입을 반환
+# total = int(math) + int(english)  #문자열을 숫자로 형변환
+# print('총점:',total )
+
+#표준 출력 : print()
+
+print('add: ', 4+5, 'sub = ', 4 -2)   #마지막 \n(:줄바꿈)
+print(1,2) ; print(3,4)   #한문장에 여러개를 적겠습니다 세미콜론; 출력할때 줄바꿔짐 즉, 줄바꿔서 실행시킨것과 같음
+print(1,2,end=' ')    #마지막에 \n대신 space로 출력
+print(5,6,7)
+print(5,6,7, sep= ',')  #, 사이 문자를 빈칸으로 구분하여 출력
+print(5,6,7, sep = ':')    # : 사이 문자를 빈칸으로 구분하여 출력
+
+num_1 = 10  #int(정수)형
+num_2 = 1.234  #floot(소수)형
+str_1 = "Hello python"
+print("int(정수)형:%d" %num_1)   #int(정수)형
+print("floot(소수)형: %f"%num_2)    #floot(소수)형
+print("16진수: %x"%num_1)    # 16진수
+print("8진수: %o "%num_1)    # 8진수
+print("문자형:%s"%str_1)     # 문자열
+print("문자형:%s"%num_2)     #문자열
+# print("int형 :%d"%str_1)  # ==> 문법오류(type error)
+
+#format()함수 사용
+
+print( format(1.234567, "7.6f"))    #전체 7자리, 소수점 5자리, 소수점포함 6자리
+
+print('{0} {1} '.format('apple',7.77))
+print('{0:<10}{1:5.2f}'.format('apple',7.778888))
+# <: 왼쪽정렬  # 5.2f는 소수점 뒤에자리가 5자리인데 그중에서 2째번에서 소수점을 찍어주는거 나머지에서 반올림
+print('{0:>10}{1:5.2f}'.format('apple',7.77))
+print('{0:^10}{1:5.2f}'.format('apple',7.77))
+print('{0:=<10}{1:5.2f}'.format('apple',7.77))
+print('{0:=>10}{1:5.2f}'.format('apple',7.77))
+print('{0:=^11}{1:5.2f}'.format('apple',7.77))
+
+# <: 왼쪽정렬, > :오른쪽 정렬 , 컴퓨터는 0부터 시작, 첫째자리수가 0이되는 거
+#숫자형 변수
+a = 12345
+
+#int형
+print(int(a))
+print(bin(15))     #2진수
+print(hex(15))     #10진수
+print(oct(15))     #8진수
+
+#floot형 : 실수형
+print(float(a))
+
+#complex형 : 복소수형
+print(complex(a))    #(12345+0j)
+print(float('inf'))   #무한대
+
+
+num = (float('inf'))
+print((num/1000 ))  #inf/정수 ==> inf
+print(1000/num)   #정수/inf ==>0.0
+print(num/num)  #inf/inf ==>nan, not a number
+print(float('nan'))  # ==> 'nan'
+
+#사칙연산: +,-,*,/,%,//
+a = 10
+b = 3
+c = a + b
+d = a -b
+e = a * b
+f = a / b
+print(f)
+g = a % b
+print(g)
+f2 = a//b
+print(f2) #정수 몫:3
+h = a**b #a의 b제곱
+print(h)
+
+print("-"*50)
+
+print('{0:=^50}'.format(' 1번'))
+
+#bool : True는 1 False는 0 정수 값으로 간주된다.
+
+a = 1
+print(a>0)  #True
+print(a<0)  #False
+
+b = a > 0
+print(b)
+print(type(b))
+print(type(a))
+
+c = True + True
+print(c, type(c))
+
+c = True + True + b
+print(c, type(c))
+
+d = bool(3)
+print(d,type(d))
+
+d = bool(0)   #False
+print(d,type(d))
+
+d = bool([])   #False
+print(d,type(d))
+
+#정리) 0이아니면 True
+
+d = bool([0])
+print(d,type(d))
+
+d = bool(-3)
+print(d,type(d))
+
