@@ -1,0 +1,125 @@
+# import class문제2(계산기) as class2
+# self.class2.ViewCalculator = self.calculate
+
+class Student:
+    def __init__(self,name,total,total_mean,total_grade):
+        self.name=name
+        self.total=total
+        self.total_mean=total_mean
+        self.total_grade= total_grade
+
+    def stu_name(self,name):
+        self.name = name
+
+    def list(self):
+        addlist = []
+        while True:
+            a = int(input('숫자입력(0은 종료):'))
+            b = addlist.append(a)
+            print(b)
+            if a == 0:
+                break
+
+    def add(self):
+        return sum(self.addlist())
+
+    def mean(self):
+        return self.list() /len(self.list())
+
+    def grade(self):
+        if self.mean >89:
+            print('A')
+
+        elif self.mean > 79:
+            print('B')
+
+        elif self.mean > 69:
+            print('C')
+
+        elif self.mean > 59:
+            print('D')
+
+
+class  ControlScoreTable:
+
+    def __init__(self):
+        self.C_student = Student()
+
+
+    def  inputStudentInfo(self):
+        stu_list = []
+        stu = input('학생이름: ')
+        return stu_list.append(stu)
+
+    def printScoreTable(self):
+        self.C_student.
+
+
+
+
+
+class Student:
+    def calculate(self, kor, math, eng):
+            total = kor + math + eng
+            avg = total / 3
+            if avg >= 90:
+                grade = "Excellent"
+            elif avg <= 50:
+                grade = 'Fail'
+            else:
+                grade = ''
+            return total, avg, grade
+
+    def printStudentInfo(self,kor, math, eng):
+        result = self.calculate(kor, math, eng)
+        print(result)
+
+#
+class ControlScoreTable:
+    def __init__(self):
+        self.student_list = []
+        self.st = Student()
+
+    def inputStudentInfo(self, st):
+        self.student_list.append(st)
+        return self.student_list
+
+    def printScoreTable(self, kor, math, eng):
+        result = self.st.printStudentInfo(kor, math, eng)
+        return result
+
+class ViewScoreTable:
+    def __init__(self):
+        self.col = ControlScoreTable()
+        self.st = Student()
+        self.list = []
+    def inputStudentInfo(self):
+        s = input('학생 수: ')
+        self.list = ['' for x in range(int(s))]
+        from collections import namedtuple
+        na_tu = namedtuple('student', 'name, kor, math, eng')
+        while True:
+            name = input('이름: ')
+            if name == 'end' or len(self.list) == s: break
+            kor = int(input('국어: '))
+            math = int(input('수학: '))
+            eng = int(input('영어: '))
+            t = self.st.calculate(kor, math, eng)
+            st = na_tu(name, kor, math, eng) + t
+            # print(st)
+            self.list = self.col.inputStudentInfo(st)
+            # print(self.list)
+    def printScoreTable(self):
+        for i in range(len(self.list)):
+            for j in range(7):
+                print(self.list[i][j], end=' ')
+            print()
+        return self.list
+
+    def ViewMenu(self):
+        self.inputStudentInfo()
+        self.printScoreTable()
+
+
+a = ViewScoreTable()
+a.ViewMenu()
