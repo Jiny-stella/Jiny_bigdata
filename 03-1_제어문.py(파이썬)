@@ -1,0 +1,140 @@
+#03-1_제어문
+
+# if, for while 문
+
+a = 10
+if  a > 5:
+    print("big")
+else:
+    print("small")
+
+
+a = 15
+if a == 10:
+    print("a = 10")
+else:
+    pass
+
+#1
+order = input("order = ")
+if order == 'spagetti':
+    pass    #왜?
+    price = 5000
+elif order == 'spam':
+    price = 6000
+elif order == 'egg':
+    price = 7000
+elif order == 'ham':
+    price = 8000
+else:
+   price = 0
+print("order price :%d" %price)
+
+2
+order = input("order = ")           #변수 헷깔료
+if order == 'spagetti':
+    pass    #왜?
+    price = str(5000)
+elif order == 'spam':
+    price = str(6000)
+elif order == 'egg':
+    price = str(7000)
+elif order == 'ham':
+    price = str(8000)
+else:
+   price = '품절되었습니다'
+
+print("order price :%s" %price)
+
+print("품절되었습니다." if price == 0)
+
+a = 10
+if a > 5:
+    x = a * 2
+else:
+    x = a / 2
+print(x)
+
+x = a *2 if a > 5 else a/2
+print(x)
+
+#파이썬 스타일
+x = (a/2, a*2)[a>5]
+print(x)
+
+t = (a/2, a*2)
+index = a > 5
+x = t[index]
+
+a= 10
+X = {False:'짝수', True: '홀수'} [a%2].strip('수')
+print(x)
+
+#for문
+
+for k in range(10): # 10번하세요!
+    print(k)
+
+l = [1,2,3,4,5,6,7,8,9]
+for k in l:
+    print(k)
+
+l= ['cat','dog','bird','pig','tiger']
+for i,k in enumerate(l):  #enumerate : 인덱스값도 return
+    print(i+1,k)
+    if i == 3:
+        print('[3=%s]' %k)
+
+# continue, break문
+for x in range(10):
+    if x >3 :
+        break   #for문 loop를 탈출
+    print(x)
+
+for x in range(10):
+    if x < 3 :
+        continue      # for문의 다음 문장을 skip 하고 for문의 시작부분으로 이동
+    print(x)              #빨강이 질문
+
+
+l= ['cat','dog','bird','pig','tiger']
+for x in l:
+    if x == 'pig':
+        break
+    print(x)
+
+l= ['cat','dog','bird','pig','tiger']
+for x in range(len(l)):
+    print(l[x])
+
+
+
+
+l= ['cat','dog','bird','pig','tiger']
+for i,k in enumerate(l):  #enumerate : 인덱스값도 return
+    print(i+1,k)
+    if i == 3:
+        print('[3=%s]' %k)
+
+# 중첩된(nested) for 문
+
+for x in range(2,4):
+    for y in range(1,10):
+        print(x, '*' ,y, '=', x*y)
+
+#while 문
+
+a = 0
+while a < 10:
+    print(a)
+    a = a + 1
+
+while True:  #무한루프
+    print(a)
+    a = a + 1
+
+a = 1000
+while 3 > 0:
+    print(a)
+    a = a + 1
+    if a == 1000: break
