@@ -1,0 +1,41 @@
+
+import car_data as car
+
+
+class CarCenter:
+    price= {'정상': 10, '브레이크고장': 1000, '전조등고장': 2000, '후미등고장': 3000, '연료부족': 4000,
+            '타이어펑크': 5000, '엔진오일부족': 6000, '냉각수부족': 7000, '폐차처리': 9000}
+
+    def __init__(self):
+        self.fix_cost = 0
+        self.fixed_list = { }
+
+    def fix_car(self):
+        return ('[' ,self.name ,']의 [' ,self.fixed_list ,'] 수리 완료, 비용은', self.fix_cost ,'원 입니다')
+
+    def set_car(self,name):
+        self.name = name
+
+    def get_car(self):
+        return self.name
+
+
+    def set_car_drv(self,drv):
+        self.drv = drv
+
+    def get_car_drv(self):
+        return self.drv
+
+    def set_car_fuel(self, fuel):
+        self.fuel = fuel
+
+    def get_car_fuel(self):
+        return self.fuel
+
+    def get_list_fuel(self):
+        return self.fixed_list
+
+# if __name__ == '__main__':
+#     a = car.Car()
+#     a.set_name('빼라리')
+#     print(a.name)
