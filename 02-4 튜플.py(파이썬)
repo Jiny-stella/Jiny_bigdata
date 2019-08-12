@@ -1,0 +1,120 @@
+튜플
+#tuple : immutable 자료형, 시퀀스(순서형), ()소괄호 사용
+
+#[]: 대괄호, {}:중괄호 ,  () 소괄호
+
+a =(1,2,3,4,5,6,7)
+print(a,type(a)) #클래스 튜플
+
+#indexing
+print(a[0],[1],[2])
+print(a[-1],[-2],[-3])
+
+#a[0] = 10 #typeError, 요소값 변경 불가
+
+b = list(a)
+b[0] = 10
+b = tuple(b)
+print(b) #(10, 2, 3, 4, 5, 6, 7)
+
+#slicing
+print(a[0:2])
+print(a[:2])
+print(a[::-1])
+a[::2]
+# a[::2] =(10,30, 50, 70) #TypeError, 요소값 변경이 불가
+
+# 패킹/언패킹
+t =1,2,3,
+print(t,type(t)) #<class 'tuple'>
+
+a = 10
+b = 20
+
+a,b,c = 10,20,30  #a,b,c는 모두 int형
+print(type(a),type(b),type(c))   #<class 'int'> <class 'int'> <class 'int'>
+
+t = 1,2,'hello'  #<class 'tuple'>  #패킹(튜플)
+x,y,z = t   #언패킹(튜플)
+print(type(x),type(y),type(z))
+
+l = ['foo', 'bar',4,5]  #패킹(리스트)
+x,y,z,w = l             #언패킹(리스트)
+
+t = (1,2,3,4,5)
+# a,b = t    -> 오류 ValueError: too many values to unpack (expected 2)
+a,*b = t
+print(a)   #1
+print(b)   #[2, 3, 4, 5]
+
+*a,b  = t
+print(a)   #[1, 2, 3, 4]
+print(b)   #5
+
+a,b,*c = t
+print(a)   #1
+print(b)   #2
+print(c)   #[3, 4, 5]
+
+# a,*b,*c = t   #SyntaxError: two starred expressions in assignment
+
+t = () #빈튜플
+t = 1,2,3
+t = 1
+print(type(t))
+t= (1,)
+t = 1,     # 데이터가 1개라도 쉼표를 사용하면 튜플
+print(t, type(t))    #(1,) <class 'tuple'>
+
+# 연산자
+t1 = (1,2,3)
+t2 = ('apple', 'banana')
+t3 = t1 + t2   #합연산 print(t1.__add__(t2))와 동일결과
+print(t3)
+
+t4 = t1*3  #반복 연산
+print(t4)   #(1, 2, 3, 1, 2, 3, 1, 2, 3)
+print(len(t4))  #요소의 개수
+print(1 in t1)  #True
+print(sum(t1))  #시퀀스형 데이터의 총합
+print(min(t1))
+print(max(t1))
+
+t = (1,2,3,2,2,3)
+print(t.count(2))
+print(t.index(2))   #1 인덱스 값
+print(t.index(2,3))  #3, 인덱스 값
+
+#튜플 중첩
+t = (12345,54321,'hello')
+u = (t,(1,2,3,4,5))
+print(u)
+print(u[0][2]) #hello
+print(u[0][2][1])   #e
+
+#두개의 값을 서로 변경
+
+x,y = 1,2
+temp = x
+x = y
+y = temp
+print(x,y)  # 2 1
+
+(x1,y1),(x2,y2)  = (1,2), (3,4)  #복수계의 변수값을 할당가능
+print(x1,y1,x2,y2)   #1 2 3 4
+
+# named tuple : 이름있는 튜플
+# 튜플을 숫자 인덱스가 아닌 이름으로 접근가능하다
+from collections import namedtuple
+Point = namedtuple('Point', 'x,y')   # point가 뒤에도 같지않아도 된다
+                                         # 클래스 인스턴스를 생성
+print(Point.__name__)   #이거 내장함수? 근데 왜 안뜨죠?   #이름을 출력
+pt1 = Point(1.0, 5.0)
+pt2 = Point(2,3)
+pt3 = Point('Hello', 'goodbye')
+print(pt1,pt2,pt3)
+
+number = pt1.x+pt1.y
+string = pt3.x + pt3.y
+print(number)   #6.0
+print(string)  #Hellogoodbye
