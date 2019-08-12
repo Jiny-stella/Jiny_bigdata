@@ -1,0 +1,647 @@
+
+
+
+class Prolog:
+    title = [0,0,0,0]
+    name = []
+    def __init__(self):
+        self.ch2 = Chapter2()
+
+    def start(self):
+        m = '''데이터를 처리하지 못한 인간의 한심한 코드로 인해 지구는 로봇세상으로 폐허가 되었고,
+        몇몇 현명한 사람들은 위험에도 무릅쓰고 세상을 구하기위해 수업을 나오는데 성공했습니다.
+        당신도 이 프로그램에 참여하시겠습니까?
+        '''
+        print(bcolors.BOLD + m + bcolors.ENDC)
+        l = []
+        choice_list = {1: 'yes', 2: 'no'}
+        print(bcolors.BOLD , choice_list , bcolors.ENDC)
+        two = int(input('select: '))
+        while True:
+            if choice_list.get(two) == 'yes':
+                knowledge = random.randint(1, 10)
+                sociability = random.randint(1, 10)
+                independence = random.randint(1, 10)
+                condition = random.randint(1, 10)
+                l.append(knowledge)
+                l.append(sociability)
+                l.append(independence)
+                l.append(condition)
+                print()
+                print(bcolors.BOLD + '당신의 능력치를 알아보는 중입니다.' + bcolors.ENDC)
+                print()
+                print(bcolors.BOLD + '능력의 순서는' + bcolors.ENDC)
+                print(bcolors.BOLD + "'지식', '사교성', '독립성', '컨디션' 입니다." + bcolors.ENDC)
+                time.sleep(1)
+                print()
+                print(bcolors.BOLD , l , bcolors.ENDC)
+                title = l.index(max(l))
+                Prolog.title = l
+                print()
+                if l[title] == l[0]:
+                    print("당신은"+bcolors.BOLD + bcolors.BLUE +"'지식왕'"+ bcolors.ENDC)
+                elif l[title] == l[1]:
+                    print("당신은"+bcolors.BOLD + bcolors.BLUE +"'사교왕'"+ bcolors.ENDC)
+                elif l[title] == l[2]:
+                    print("당신은"+bcolors.BOLD + bcolors.BLUE +"'아웃사이더'"+ bcolors.ENDC)
+                elif l[title] == l[3]:
+                    print("당신은"+bcolors.BOLD + bcolors.BLUE +"'체력왕'"+ bcolors.ENDC)
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--학교로 이동 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.ch2.conversation()
+
+            else:
+                print(bcolors.BOLD + bcolors.RED + "게임 종료 " + bcolors.ENDC)
+                break
+
+
+
+class Chapter2:
+    def __init__(self):
+        self.first_p = First_period()
+    def conversation(self):
+        print()
+        time.sleep(1)
+        print(bcolors.BOLD + '옆에 사람이 대화를 걸어옵니다. 대답하시겠습니까 ?' + bcolors.ENDC)
+        choice_list = {1: '반갑게 대화', 2: '무시'}
+        print(bcolors.BOLD , choice_list , bcolors.ENDC)
+        two = int(input('select: '))
+        while True:
+            if choice_list.get(two) == '반갑게 대화':
+                print(bcolors.BOLD + '<%s 선택>'%choice_list.get(two))
+                print('주머니 속 사탕을 꺼내며...')
+                print('반갑습니다. 저는 완호에요. 당신의 이름은 어떻게 되나요?')
+                print()
+                my_name = input('내 이름은....? : ')
+                print()
+                print('당신의 이름은'+bcolors.RED +' %s'%my_name, bcolors.ENDC+ bcolors.BOLD+ '이군요. 앞으로 잘 부탁드려요' + bcolors.ENDC)
+                Prolog.name = my_name
+                return self.first_p.Question_1()
+
+            elif choice_list.get((two)) == '무시':
+                print(bcolors.BOLD + '<%s 선택>'%choice_list.get(two))
+                print(bcolors.BOLD+ bcolors.RED+'나에게 말을 걸지 마!' + bcolors.ENDC)
+                print()
+                print(bcolors.BOLD + '옆에 사람이 대화를 걸어옵니다. 대답하시겠습니까 ?' + bcolors.ENDC)
+                choice_list = {1: '반갑게 대화', 2: '무시'}
+                print(bcolors.BOLD, choice_list, bcolors.ENDC)
+                two = int(input('select: '))
+
+
+
+
+class First_period:
+    def __init__(self):
+        self.second_p =Second_period()
+
+    def Question_1(self):
+        print()
+        print(bcolors.BOLD + '1교시 수업을 시작했다 수업을 들은후 실습문제를 풀어야한다' )
+        print()
+        print('문제 1 파이썬을 만든사람은?'+ bcolors.ENDC)
+        print()
+        answer_list = {1: '라파엘 바란', 2: '마크 저커버그', 3:'스티브 잡스', 4:'귀도 반 로섬'}
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        answer = int(input('answer= '))
+        while True:
+            if answer_list.get(answer) == '귀도 반 로섬':
+                print()
+                print(bcolors.BOLD + '정답입니다!' + bcolors.ENDC)
+                print(bcolors.BLUE + '지식이 +1 증가' + bcolors.ENDC)
+                Prolog.title[0] += 1
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.second_p.Question_2()
+            else:
+                print()
+                print(bcolors.BOLD + '오답입니다.' + bcolors.ENDC)
+                print(bcolors.BLUE + '지식이 -1 감소' + bcolors.ENDC)
+                Prolog.title[0] -= 1
+                print()
+                print('문제 1 파이썬을 만든사람은?')
+                print()
+                answer_list = {1: '라파엘 바란', 2: '마크 저커버그', 3: '스티브 잡스', 4: '귀도 반 로섬'}
+                print(bcolors.BOLD, answer_list, bcolors.ENDC)
+                answer = int(input('answer= '))
+
+
+class Second_period:
+
+    def __init__(self):
+        self.third_p =Third_period()
+    def Question_2(self):
+        print()
+        print('2교시 수업을 듣다가 졸고있는 당신을 발견한 강사님께서 질문을 하였습니다'
+               ,bcolors.RED + Prolog.name + bcolors.ENDC,'!!!  나머지를 반환하는 의미를 가진 기호는 뭐냐?')
+        print()
+        answer_list = {1:'/', 2:'%', 3:'**'}
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        answer = int(input('answer = '))
+        print()
+        while True:
+            if answer_list.get(answer) == '%':
+                print(bcolors.BOLD + '정답입니다!' + bcolors.ENDC)
+                print(bcolors.BLUE + '지식이 +1 증가' + bcolors.ENDC)
+                Prolog.title[0] += 1
+                print()
+                time.sleep(1)
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.third_p.Question_3()
+            elif answer_list.get(answer) !='%':
+                print(bcolors.BOLD + '오답입니다.' + bcolors.ENDC)
+                print(bcolors.BLUE + '지식이 -1 감소' + bcolors.ENDC)
+                Prolog.title[0] -= 1
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' +bcolors.ENDC)
+                time.sleep(1)
+                return self.third_p.Question_3()
+
+class Third_period:
+    def __init__(self):
+        self.lunch_m =Lunch_menu()
+
+    def Question_3(self):
+        print()
+        print(bcolors.BOLD +'3교시에서는 당신은 딕셔너리에서 value 값을 추출하는 방법에 대해 학습하고 있습니다.'
+              '수업을 잘들었는지 간단한 문제를 풀어야 점심을 먹을 수 있습니다. '+bcolors.ENDC)
+        print("'a'={'name':'홍길동','age': 30,'phone':'010-123-33445', 'birth':'20021020',10:100}",
+              '홍길동을 출력하는 방법은?')
+        print()
+        answer_list = {1:"a['name']", 2:"a{'name'}" , 3:"a('name')"}
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        answer = int(input('answer = '))
+        print()
+        if answer_list.get(answer) == "a['name']":
+            print(bcolors.BOLD + bcolors.BLUE + '잘했어요!'+bcolors.ENDC,bcolors.RED+ Prolog.name+ bcolors.ENDC,bcolors.BOLD + bcolors.BLUE +'씨 점심먹으러 가요!' + bcolors.ENDC)
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--점심 먹으러 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.lunch_m.lunch_menu()
+
+        else:
+            print(bcolors.BOLD + bcolors.RED + '틀렸지만 괜찮아요! 밥먹고 다시 공부해요~' + bcolors.ENDC)
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--점심 먹으러 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.lunch_m.lunch_menu()
+
+class Lunch_menu:
+    def __init__(self):
+        self.fourth_p = Fourth_period()
+
+    def lunch_menu(self):
+        print()
+        print(bcolors.BOLD+ '점심메뉴정하기'+ bcolors.ENDC)
+        menu_list = {1:'집밥',2:'코핫',3:'밥풀',4:'마미하우스'}
+        print(bcolors.BOLD, menu_list, bcolors.ENDC)
+        answer = int(input("어디로 갈까요?:"))
+        if menu_list.get(answer) == '집밥':
+            print(bcolors.BOLD+ "집밥을 선택하셨군요~ 참고로 완호는 뚝배기닭볶음탕이 좋아해요~")
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--집밥으로 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.fourth_p.selection_3()
+        elif menu_list.get(answer) == '코핫':
+            print("코핫을 선택하셨군요~ 참고로 완호는 치떡돈을 좋아해요~")
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--코핫 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.fourth_p.selection_3()
+        elif menu_list.get(answer) == '밥풀':
+            print("밥풀을 선택하셨군요~ 참고로 완호는 별로 안좋아해요")
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--밥풀로 이동 중--' +bcolors.ENDC)
+            time.sleep(1)
+            return self.fourth_p.selection_3()
+        elif menu_list.get(answer) == '마미하우스':
+            print("마미하우스를 선택하셨군요~ 참고로 완호는 간장불고기를 좋아해요~(하트)")
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--마미하우스로 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.fourth_p.selection_3()
+
+class Fourth_period:
+    def __init__(self):
+        self.question_4= Question_4()
+        self.ch5= Chapter5()
+    def selection_3(self):
+        print()
+        print(bcolors.BOLD + '오후 수업을 시작했습니다. 참여하시겠습니까?'+ bcolors.ENDC)
+        selection_list = {1:"땡땡이 치고 꿀잼을 간다", 2:"얌전히 수업을 듣는다"}
+        print()
+        print(bcolors.BOLD, selection_list, bcolors.ENDC)
+        selection = int(input('선택하시오: '))
+        if selection_list.get(selection) == "땡땡이 치고 꿀잼을 간다":
+            print()
+            print(bcolors.BOLD + bcolors.BLUE + '꿀잼으로 이동합니다.' +bcolors.ENDC)
+            time.sleep(1)
+            print(bcolors.BOLD + bcolors.RED + "--꿀잼에 도착해 노는중(눈누난나) ~.~ -- " + bcolors.ENDC)
+            time.sleep(1)
+            return self.ch5.conversation()
+        elif selection_list.get(selection) == "얌전히 수업을 듣는다":
+            print(bcolors.BOLD + bcolors.BLUE + '훌륭한 선택입니다! 화이팅!' + bcolors.ENDC)
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--강의실로 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.question_4.Question_4()
+
+class  Question_4:
+    def __init__(self):
+        self.help_4 = Help_4()
+
+    def Question_4(self):
+        print()
+        print(bcolors.BOLD + '''4교시 수업 예제 문제입니다. 문자열을 입력하는 방법으로 아닌것은?)
+        answer_list = {1:'',2:"",3:''' '''}
+        '''+ bcolors.ENDC)
+        print('.......')
+        time.sleep(1)
+        print('당신은 문제를 풀지 못했습니다. 옆사람 진영에게 물어보세요!')
+        time.sleep(1)
+        return self.help_4.help_4()
+
+class Help_4:
+    def __init__(self):
+        self.fp = Five_period()
+
+    def help_4(self):
+        print()
+        m = '''진영: 이 문제를 못 풀수 있어~ 그럴수 있어요~ 
+        문자열 같은 경우는 큰따옴표나 작은 따옴표로 같이 출력이 되야 문자열로 인식을 하게 되요! 
+        그래서 1번과 2번은 정답이고 3번은 여러줄을 주석을 달 때 쓰는 방법이에요!'''
+        print(bcolors.BOLD  + m + bcolors.ENDC)
+        print()
+        print("고마워요 진영!")
+        time.sleep(1)
+        print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' + bcolors.ENDC)
+        time.sleep(1)
+        return self.fp.selection_5()
+
+class Five_period:
+    def __init__(self):
+        self.ch5 = Chapter5()
+
+    def selection_5(self):
+        print()
+        m = '''갑자기 밖에서 이상한 소리가 들리고 땅이 흔드려오고 완호가 소리치며 말합니다. "밖에서 이상한 소리가 들려오고 있어!"
+        호기심 많은 당신은 밖을 보고 싶은데 보면 안될 거 같은 느낌이 듭니다. 그래도 밖을 보시겠습니까?   
+            '''
+        print(bcolors.BOLD + m + bcolors.ENDC)
+        print()
+        choice_list = {1: '창밖을 확인한다.', 2: '무시한다.'}
+        print(bcolors.BOLD, choice_list, bcolors.ENDC)
+        two = int(input('select: '))
+        print()
+        while True:
+            if choice_list.get(two) == '창밖을 확인한다.':
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 창밖을 확인하러 가는 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.ch5.conversation()
+
+            elif choice_list.get((two)) == '무시한다.':
+                print(bcolors.BOLD + bcolors.RED + " 공부 안되게 밖에서 무슨 소리야..짜증나게 " +bcolors.ENDC)
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--계속 공부 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.ch5.conversation()
+
+
+class Chapter5:
+    def __init__(self):
+        self.ch6 = Chapter6()
+        self.six = Six_period()
+    def conversation(self):
+        print()
+        print(bcolors.BOLD+ '당신은 로봇들이 강의실 쪽으로 달려오고 있는 것을 확인했습니다. 당신은 로봇과 싸워 이기려면 문제를 맞춰야 한다.'+ bcolors.ENDC)
+
+        print('리스트 a = [ 1, 2, 3] 에서 숫자 3을 꺼내시오 ')
+        answer_list = {1: "a[2]", 2: "a[1]", 3: "a[3]"}
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        print()
+        answer = int(input('answer = '))
+        if answer_list.get(answer) ==  "a[2]":
+            print(bcolors.BOLD + bcolors.BLUE + '정답입니다!', ' 지식 +1 ' +bcolors.ENDC)
+            Prolog.title[0] += 1
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--로봇을 파괴하고 다시 수업을 준비중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.six.Question_6()
+        elif answer_list.get(answer) != "a[2]":
+            print(bcolors.BOLD + bcolors.RED + '이런 쉬운 문제도 틀렸네요.. 지식 -1 ' + bcolors.ENDC)
+            Prolog.title[0] -= 1
+            time.sleep(1)
+            return self.ch6.conversation()
+
+class Chapter6:
+    def __init__(self):
+        self.sp=Six_period()
+
+    def conversation(self):
+        print()
+        print('로봇들이 강의실 문을 부시고 들어와 우리를 공격하고 데이터를 뺴앗아 갔습니다.')
+        print()
+        print(bcolors.BOLD + bcolors.RED + '모든 능력치가 감소하였습니다.(-2) ' + bcolors.ENDC)
+        Prolog.title[0] -= 2
+        Prolog.title[1] -= 2
+        Prolog.title[2] -= 2
+        Prolog.title[3] -= 2
+        print()
+        print(bcolors.BOLD + bcolors.YELLOW + '-- 도망 중--' + bcolors.ENDC)
+        time.sleep(1)
+        return self.sp.Question_6()
+
+
+class Six_period:
+    def __init__(self):
+        self.seven_p=Seven_period()
+    def Question_6(self):
+        print()
+        print(bcolors.BOLD+ '로봇과의 전투 이후, 평화롭게 수업을 듣게 되는데 평화롭게 있다가 졸던 당신은 강사님께 걸리게 되고 '
+              '강사님이 문제를 맞추지 않으면 점수를 깎겠다고 하십니다.  ')
+        print("문제 : 슬라이싱 기법으로 a[시작번호:끝번호]를 지정할떄 끝 번호는 포함된다( o / x )" + bcolors.ENDC)
+        answer_list = {1: 'O' , 2:'x'}
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        answer = int(input('answer = '))
+        if answer_list.get(answer) == 'x':
+            print(bcolors.BOLD + bcolors.BLUE + '정답입니다!', ' 지식 +1 ' + bcolors.ENDC)
+            Prolog.title[0] += 1
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--강의실 옆 휴게실로 이동 중--' +bcolors.ENDC)
+            time.sleep(1)
+            return self.seven_p.selection_7()
+        elif answer_list.get(answer) != 'x':
+            print(bcolors.BOLD + bcolors.RED + '이런 쉬운 문제도 틀렸네요.. 지식 -1 ' + bcolors.ENDC)
+            Prolog.title[0] -= 1
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--강의실 옆 휴게실로 이동 중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.seven_p.selection_7()
+
+class Seven_period:
+        def __init__(self):
+            self.question_7=Question__7()
+        def selection_7(self):
+            print(bcolors.BOLD +'''수업을 듣다가 따분했던 나는 인터넷 서핑을 하다가 폐허가 된 도심속에서도 로봇들을 위협하는 
+        데이터를 가지고 있는 사람들과 그 가족들을 모조리 몰살시키려는 계획이 있다는 뉴스를 보게 된다.
+        물론 당신도 위협을 받을 수 있는 상황이다. 그래도 교육을 계속 들을 생각인가?  
+                  '''+ bcolors.ENDC)
+            selection_list = {1: '수업을 계~속 듣는다' , 2:'잠깐 나갔다 온다'}
+            print(bcolors.BOLD, selection_list, bcolors.ENDC)
+            answer = int(input('answer = '))
+            if selection_list.get(answer) == '수업을 계~속 듣는다':
+                print()
+                print(bcolors.BOLD + bcolors.BLUE + '그래요~ 잘선택했어요! 공.부.만.이. 살.길!','지식 +1' + bcolors.ENDC)
+                Prolog.title[0] += 1
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' +bcolors.ENDC)
+                time.sleep(1)
+                return self.question_7.question__7()
+
+            elif selection_list.get(answer) =='잠깐 나갔다 온다':
+                print()
+                print(bcolors.BOLD + bcolors.BLUE + '그럼요~ 쉬는 시간도 있어야죠!  ^0^ ' + bcolors.ENDC)
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--다음 수업으로 이동 중--' + bcolors.ENDC)
+                time.sleep(1)
+                return self.question_7.question__7()
+
+class Question__7:
+    def __init__(self):
+        self.f_p = final_Prolog()
+    def question__7(self):
+        print()
+        print("수업을 계속 듣기 위한 몸풀기 퀴즈: 튜플은 생성, 삭제, 수정이 가능하다! ( o / x ) ")
+        answer_list = {1: 'O' , 2:'x'}
+        print()
+        print(bcolors.BOLD, answer_list, bcolors.ENDC)
+        answer = int(input('answer = '))
+        if answer_list.get(answer) == 'x':
+            print(bcolors.BOLD + bcolors.BLUE + '정답입니다!', ' 지식 + 2 ' + bcolors.ENDC)
+            print()
+            Prolog.title[0] += 2
+            print(bcolors.BOLD + bcolors.YELLOW + '--마지막 수업을 듣는중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.f_p.filnal()
+        elif answer_list.get(answer) != 'x':
+            print(bcolors.BOLD + bcolors.RED + '이런 쉬운 문제도 틀렸네요.. 지식 - 3' + bcolors.ENDC)
+            Prolog.title[0] -= 3
+            print()
+            print(bcolors.BOLD + bcolors.YELLOW + '--마지막 수업을 듣는중--' + bcolors.ENDC)
+            time.sleep(1)
+            return self.f_p.filnal()
+
+
+class final_Prolog:
+
+    def __init__(self):
+        self.tx = Txt()
+
+    def filnal(self):
+        print()
+        m = '''어제 하루종일 수업을 들어봤는데 어떘나요? 앞으로 학교를 계속 다니겠습니까?
+        '''
+        print(bcolors.BOLD +  m + bcolors.ENDC)
+        choice_list = {1: '앞으로 열심히 계속 다닌다', 2: '포기한다'}
+        print(choice_list)
+        two = int(input('select: '))
+        while True:
+            if choice_list.get(two) == '앞으로 열심히 계속 다닌다':
+                print()
+                print(bcolors.BOLD + bcolors.YELLOW + '--6개월 후--' +bcolors.ENDC)
+                time.sleep(1)
+                return self.tx.t_file()
+
+            elif choice_list.get(two) == '포기한다':
+                time.sleep(1)
+                print(bcolors.BOLD + bcolors.RED + "괜찮아요. 세상은 넓고 직업은 많아요!" +bcolors.ENDC)
+                break
+
+
+class Txt:
+    def __init__(self):
+        self.ch9 = Chapter9()
+    def t_file(self):
+        study_hero = open('study_hero.txt', 'a', encoding='UTF-8')
+        study_hero.writelines(Prolog.name)
+        knowledge, sociability, independence, condition = Prolog.title
+        k = str(knowledge)
+        s = str(sociability)
+        i = str(independence)
+        c = str(condition)
+        study_hero.write(str(' ' + k + ' ' + s + ' ' + i + ' ' + c + '\n'))
+        study_hero.close()
+        time.sleep(1)
+        return self.ch9.conversation()
+
+class Chapter9:
+    def __init__(self):
+        self.sam= Samsung()
+        self.nav= Naver()
+        self.goo= Google()
+    def conversation(self):
+        print()
+        print('이제 모든 수업을 종료하고 원하는 회사를 선택하려 합니다. 어떤 기업에 들어 가시겠습니까?')
+        print()
+        choice_list = {1: '삼성', 2: '네이버', 3:'구글'}
+        print(bcolors.BOLD, choice_list, bcolors.ENDC)
+        three = int(input('select: '))
+        if choice_list.get(three) == '삼성':
+            print('<%s 선택>'%choice_list.get(three))
+            print()
+            print('당신은 삼성에 도전합니다')
+            print()
+            print(bcolors.BOLD + bcolors.BLUE +'반갑습니다. 허허허~ 저는 삼성 면접관 서재원 입니다. 다행히 오늘 날씨가 여러분들을 환영해 주는 듯 합니다. 여기까지 오느라고 고생많으셨습니다.  '+ bcolors.ENDC)
+            my_name = Prolog.name
+            print(bcolors.BOLD + bcolors.BLUE +'당신의 성함은 %s이군요. 저희 회사에 지원동기를 1분동안 프리스타일로 말해보세요 '%my_name+ bcolors.ENDC)
+            time.sleep(1)
+            a= input('저의 지원동기는:')
+            print(a)
+            time.sleep(1)
+            return self.sam.filnal()
+
+        elif choice_list.get(three) == '네이버':
+            print('<%s 선택>' % choice_list.get(three))
+            print()
+            print('당신은 네이버에 도전합니다')
+            print()
+            print(bcolors.BOLD + bcolors.BLUE +'반갑습니다. 호호호~ 저는 네이버 면접관 양한아 입니다. '
+                                               '저희 네이버는 대한민국 최고의 포털업체로써 자부심이 매우 강하답니다 ^^ '
+                                               '열심히 하셔서 꼭 같이 일했으면 좋겠어요~ 행운을 빕니다' + bcolors.ENDC)
+            my_name = Prolog.name[0]
+            print()
+            print(bcolors.BOLD + bcolors.BLUE +'지원서를 보니 성함이 %s 맞으시죠? 저희 회사에 지원동기를 1분동안 말해보세요 ' % my_name + bcolors.ENDC)
+            time.sleep(1)
+            a = input('저의 지원동기는:')
+            print(a)
+            time.sleep(1)
+            return self.nav.filnal()
+
+        elif choice_list.get(three) == '구글':
+            print('<%s 선택>' % choice_list.get(three))
+            print()
+            print('당신은 구글에 도전합니다')
+            print()
+            print(bcolors.BOLD + bcolors.BLUE +'헬로우 나이스투 미츄! 반갑습니다. 저는 구글 면접관 최진영 입니다. 저희 구글은 세계 최고의 글로벌 포텉업체로써 직원복지가 매우 좋은 회사입니다. 먼길 오느라 수고 많으셨습니다. 면접 잘보길 바라겠습니다! ' +  bcolors.ENDC)
+            print()
+            my_name = Prolog.name
+            print()
+            print(bcolors.BOLD + bcolors.BLUE +'당신의 성함은 %s이군요. 저희 회사에 지원동기를 1분동안 말해보세요' % my_name + bcolors.ENDC)
+            print()
+            a = input('저의 지원동기는:')
+            print(a)
+            time.sleep(1)
+            return self.goo.filnal()
+
+class Samsung:
+    def __init__(self):
+        self.sd=Sound()
+
+    def filnal(self):
+        print()
+        m = '''지원 동기 잘 들었습니다. 우리 회사에 필요한 인재인지는 두고봐야 할거 같네요. 
+        하지만 최종적으로 우리와 함께 일하려면은 지금까지 수업시간에 풀은 문제 점수에 따라 
+        합격 여부가 판단 됩니다. 행운을 빌어요 ^^ '''
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(2)
+        return self.sd.sound()
+
+
+class Naver:
+    def __init__(self):
+        self.sd=Sound()
+
+    def filnal(self):
+        print()
+        m = '''지원 동기 잘 들었습니다. 우리 회사에 필요한 인재인거 같네요. 하지만 최종적으로 우리와 함께
+         일하려면은 지금까지 수업시간에 풀은 문제 점수에 따라 합격 여부가 판단 됩니다. 화이팅! '''
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(2)
+        return self.sd.sound()
+
+
+class Google:
+    def __init__(self):
+        self.sd=Sound()
+
+    def filnal(self):
+        print()
+        m = '''지원 동기 잘 들었습니다. 우리 회사에 필요한 인재 인거 같네요. 하지만 최종적으로 우리와 함께
+         일하려면은 지금까지 수업시간에 풀은 문제 점수에 따라 합격 여부가 판단 됩니다. 화이팅! '''
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(2)
+        return self.sd.sound()
+
+
+
+class Sound:
+
+    def sound(self):
+        from dataframe import get_line
+        from finish import passed
+        import os
+        m = '''면접 발표일 3일전 '''
+        print()
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(1)
+        print()
+        m = '''면접 발표일 2일전 '''
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(1)
+        print()
+        m = '''면접 발표일 1일전 '''
+        print(bcolors.BOLD + bcolors.BLUE + m + bcolors.ENDC)
+        time.sleep(1)
+        print()
+        m = '''!!!!!!!!!!!!!!!!면접 당일 두둥!!!!!!!!!!!!!!!!!'''
+        print(bcolors.BOLD + bcolors.RED + m + bcolors.ENDC)
+        time.sleep(1)
+        choice_list = {1: '면접결과를 확인한다.', 2: '조금 있다가 확인한다.'}
+        print(bcolors.BOLD, choice_list, bcolors.ENDC)
+        two = int(input('select: '))
+        if os.path.isfile('study_hero.txt') == True:
+            f = open('study_cal.txt', 'w', )
+            f.close()
+        hero = open('study_hero.txt', 'r', encoding='UTF-8')
+        cal = open('study_cal.txt', 'a')
+
+        if choice_list.get(two) == '면접결과를 확인한다.':
+            while True:
+                line = hero.readline()
+                if not line: break
+                row = line.split()
+                name = row[0]
+                l =get_line()
+                my_sum = sum(l.get(name))
+                avg = my_sum/4
+                if avg >= 7:
+                    grade = 'A'
+                elif avg <= 3:
+                    grade = 'C'
+                else:
+                    grade = 'B'
+                sum_me = str(my_sum)
+                avg_me = str(avg)
+                cal.write(line[:-1] + ' ' + sum_me + ' ' + avg_me + ' ' + grade + '\n')
+            print('당신의 등급은 %s' % grade)
+        elif choice_list.get(two) == '조금 있다가 확인한다.':
+            bb = []
+            choice_list = {1: '면접결과를 확인한다.', 2: '조금 있다가 확인한다.'}
+            print(bcolors.BOLD, choice_list, bcolors.ENDC)
+            two = int(input('select: '))
+            return bb
+        hero.close()
+        cal.close()
+        print(passed())
+
+
+
+
+
+if __name__ == '__main__':
+    a = Prolog()
+    a.start()
+
