@@ -1,0 +1,97 @@
+# 02-5_사전.py
+# Dictionary , <class 'dict'>
+# {key:value,...}
+# 연관형, mutable(요소 추가 변경이 가능)
+# 시퀀스형(순서형)이 아니다 : 순서가 없다
+# key는 반드시 immutale 형이어야 한다
+# value는 immutable, mutable 모두 가능
+
+a = {' name ': '홍길동', 'age':30, 'phone':'010-1234-1234',   #30은 왜 따움표 안해? 숫자라서 그러면 010이거는 문자인가?
+     'birth':'20021020',10:'100'}
+
+print(a,type(a))
+# {' name ': '홍길동', 'age': 30, 'phone': '010-1234-1234', 'birth': '20021020'} <class 'dict'>
+
+#요소 접근 : a[key]
+
+print(a[' name '],a['age'],a[10]) # 홍길동 30 100
+
+#요소 변경, 추가, 삭제
+
+a[' name '] = '김철수'
+a['age'] = 20
+a[10] = 500
+print(a)  #{' name ': '김철수', 'age': 20, 'phone': '010-1234-1234', 'birth': '20021020', 10: 500}
+
+a[(1,2,3)] = 10 #가능
+# a[[1,2,3]] = 10 #TypeError : unhashale type : 'list'
+
+a['address'] = '대전시'
+a['job'] = '대학생'
+a[1] = 1
+print(a)
+# {' name ': '김철수', 'age': 20, 'phone': '010-1234-1234', 'birth': '20021020', 10: 500,
+# 'address': '대전시', 'job': '대학생', 1: 1}
+
+del a[(1,2,3)]
+del a['address']
+print(a)
+del a[1]
+print(a)
+# {' name ': '김철수', 'age': 20, 'phone': '010-1234-1234', 'birth': '20021020', 10: 500, 'job': '대학생'}
+
+#연산자
+print(len(a))   #6
+
+print('birth' in a ) # True
+
+print(a.keys())  #key만 dict_keys 타입으로 변환
+# dict_keys([' name ', 'age', 'phone', 'birth', 10, 'job'])
+print(list(a.keys()))  #[' name ', 'age', 'phone', 'birth', 10, 'job']
+
+print(a.values())  #dict_values(['김철수', 20, '010-1234-1234', '20021020', 500, '대학생'])
+print(list(a.values()))  #['김철수', 20, '010-1234-1234', '20021020', 500, '대학생']
+
+print(a.items())
+#dict_items([(' name ', '김철수'), ('age', 20),
+# ('phone', '010-1234-1234'), ('birth', '20021020'), (10, 500), ('job', '대학생')])
+
+print(list(a.items()))
+# [(' name ', '김철수'), ('age', 20), ('phone', '010-1234-1234'), ('birth', '20021020'), (10, 500), ('job', '대학생')]
+
+print(a[' name '])  #김철수
+print(a.get(' name '))    #김철수
+# print(a['hobby'])  KeyError: 'hobby'
+print(a.get('hobby'))   #None
+print(a.get('hobby','독서'))
+
+d = {'gender':'여성','ten':10}  #중복된 key를 사용가능
+a.update(d)  #새로운 dict의 요소를 모두 추가
+print(a)
+#{' name ': '김철수', 'age': 20, 'phone': '010-1234-1234',
+# 'birth': '20021020', 10: 500, 'job': '대학생', 'gender': '여성', 'ten': 10}
+
+a.pop('ten')
+print(a)
+
+#dict comprehension(사전내장)
+
+a = {k:1 for k in 'abcdefg'}
+print(a,type(a))
+
+b = ['name','age','phone','birth',10]
+a = {k:'0' for k in b}
+print(a,type(a))
+
+a1 =  ['name','age','phone','birth',10]
+a2 =  ['김철수' ,20, '010-1234-1234', '20021020', 500]
+
+a = {a1[0]:a2[0],a1[1]:a2[1]}
+print(a)     #{'name': '김철수', 'age': 20}
+
+a = list(zip(a1,a2))  #{'name': '김철수', 'age': 20}
+
+# 2개의 다른 리스트를 사용하여 한개의 사전을 생성
+a = { x:y for x,y in zip(a1,a2) }
+print(a)   #{'name': '김철수', 'age': 20, 'phone': '010-1234-1234', 'birth': '20021020', 10: 500}
+
