@@ -1,0 +1,25 @@
+import os
+
+if os.path.isfile("items.txt") == False:
+    f = open("items.txt","w")
+    f.close()
+
+if os.path.isfile("salesTable.txt") == False:
+    f = open("salesTable.txt","w")
+    f.close()
+
+while True:
+    a= int(input('1:품목 정보 등록 2:판매 정보 등록 3:판매 현황표 추력 0: 종료:'))
+    if a == 1:
+        f=open('items.txt','a')
+        name=input('item name:')
+        price=input('price:')
+        f.write(name+" "+price+ "\n")
+        f.close()
+
+    elif a == 0:
+        break
+
+f = open('items.txt', 'r')
+print(f.readline())
+
