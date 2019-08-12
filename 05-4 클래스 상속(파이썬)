@@ -1,0 +1,67 @@
+
+#05-4 클래스 상속
+
+# 상위 클래스 = 부모 클래스 = 기반(base) 클래스
+
+class Calculator():
+
+    def __init__(self):
+        print('Calculator 생성자:상위클래스')
+        self.a_range = 100
+        self.b_range = 200
+
+    def add(self,a,b):
+        if a > self.a_range or b > self.b_range:
+           return 'Over Range!!'
+        return a + b
+
+    def subtract(self,a,b):
+        return a - b
+
+    def multiply(self,a,b):
+        return a * b
+
+    def divide(self,a,b):
+        print("상위클래스 divide")
+        return a / b
+
+# cal = Calculator()
+# print(cal.add(10,20))
+# print(cal.divide(20,10))
+# print(cal.divide(20,0))      #zeroDivisionError
+
+# 하위클래스 = 자식클래스 = 파생(derived) 클래스
+# 상속 : class 자식클래스(부모클래스1,부모클래스2,부모클래스3..)
+class More_Calculator(Calculator):
+    pass
+    def __init__(self):
+        print('More_Calculator 생성자:하위클래스')
+        Calculator. __init__(self) # 부모 클래스의 생성자를 호출
+        # 추가 메서드 구현
+    def pow(self,a,b):
+        return a**b
+
+    def add_3(self,a,b,c):
+        return a + b + c
+
+    # 메서드 오버라이딩(Over riding) : 상속
+    # 부모클래스의 메서드를 자식 클래스기 재정의하여 사용
+    def divide(self,a,b):
+        print('하위클래스 divide')
+        if b == 0:
+            return 'zero divide!!'
+        return a / b
+
+mcal = More_Calculator()
+print(mcal.add(10,20))
+print(mcal.pow(10,2))
+print(mcal.add_3(10,20,30))
+print(mcal.divide(10,20))
+print(mcal.divide(0,20))  # 0 / n --> 0
+print(mcal.divide(10,0))  #ZeroDivisionError: division by zero
+
+print(mcal.multiply(10,20))
+
+mcal.a_range = 30000
+mcal.b_range = 2000
+print(mcal.add(20001,1001))  # 2100+
