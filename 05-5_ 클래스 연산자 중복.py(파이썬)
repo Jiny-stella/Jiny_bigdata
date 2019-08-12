@@ -1,0 +1,60 @@
+# 05-3 클래스 연산자 중복
+
+# 연산자 중복(Operator overloading)
+#  파이썬에 내장되어있는 연산자(매서드,함수)
+
+
+class Calculator:
+
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+        self.info_str =  'Calculator class v1.8'
+
+    def add(self,a,b):
+        return  a+b
+
+    def subtract(self,a,b):
+        return a -b
+
+    def __add__(self,instance2):
+        print('연산자 중복: __add__')
+        result = abs(self.a) + abs(instance2.b)    #절대값의 add가 되었음
+        result2 = str(self.a) + str(instance2.b)
+        return result, result2
+
+#   __str__ 는  __repr__ 매서드를 대신 할 수 없다
+
+    def __str__(self):
+        print('연산자 중복: __str__')
+        return self.info_str
+
+#   __repr__ 는 __str__ 매서ㅡ를 대신할 수 있다.
+
+    def __repr__(self):
+        print('연산자 중복: __repr__')
+        return self.info_str
+
+cal = Calculator()
+cal2 = Calculator()
+cal.a = 300
+cal2.b = 500
+result = cal + cal2   #클래스를 더하는 것
+print(result)
+
+print(str(cal))
+print(repr(cal))
+
+# #<class int>
+# a = 20
+# b = 30
+# c = a + b   # '+' ==> '__add__()
+# c = a.__add__(b) #클래스의 메소드 가 나옴 (언더바 2개 파이썬에 내장되어있는함수)
+# print(c)
+#
+#
+# #<class str>
+# a = ' Hi'
+# b = 'Bye'
+# c = a.__add__(b)
+# print(c)
