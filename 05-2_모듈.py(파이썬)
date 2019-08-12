@@ -1,0 +1,55 @@
+#05-2_모듈.py
+
+# main 모듈
+
+# main 모듈
+import calculator
+
+if __name__=='__main__':
+
+    result = calculator.add(100,200)
+    print(result)
+
+    result = calculator.subtract(100,200)
+    print(result)
+
+    result = calculator.multiply(100,200)
+    print(result)
+
+    result = calculator.divide(100,200)
+    print(result)
+
+import calculator as cal
+
+if __name__=='__main__':
+
+    result = cal.add(100,200)
+    print(result)
+
+    result = cal.subtract(100,200)
+    print(result)
+
+    result = cal.multiply(100,200)
+    print(result)
+
+    result = cal.divide(100,200)
+    print(result)
+
+from calculator import add
+
+from calculator import add, subtract, multiply, divide
+# from calculator import * # 전부다
+
+if __name__=='__main__':
+
+    result = add(100,200)
+    print(result)
+
+    result = subtract(100,200)
+    print(result)
+
+    result = multiply(100,200)
+    print(result)
+
+    result = divide(100,200)
+    print(result)
