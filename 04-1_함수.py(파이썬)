@@ -1,0 +1,405 @@
+#04-1_함수.py
+
+'''
+def 함수명(매개변수):
+    <수행할 문장1>
+    수행할 문장2>
+    ...
+    :return 반환할 값
+'''
+# #1회 덧셈
+# a = 10
+# b = 20
+# c = a + b
+# print('a + b = %d' %c)
+#
+# # 10 회 덧셈을 반복
+# a = [1,2,3,4,5,6,7,8,9,10]
+# b = [10,20,30,40,50,60,70,80,90,100]
+#
+# for x in a:
+#     for y in b:
+#         print(x+y, end= " ")
+#     print(' ')
+# #
+# # for k in range(lem(a)):
+# #     print(k, ':', a[k] + b[k])
+#
+# #함수 구현
+#
+# def add(a,b):  # 함수 정의
+#     c = a + b
+#     print('add called!!')
+#     return c
+#
+def add(a,b):  # 함수 정의
+    c = a + b
+print(add('hello','good bye'))
+print(add([1,2,3],[4,5,6]))
+print(add((1,2,3),(4,5,6)))
+
+
+# result = add(10,20) #함수 호출
+print(result)
+print('EXIT')
+
+# Subtract() 함수 구현
+
+def subtract(a,b):
+    c = a - b
+    print('subtract called!!')
+    return c
+result = subtract(20,10)
+print(result)
+
+# multiply() 함수 구현
+
+def multiply(a,b):
+    c = a * b
+    return c
+result = multiply(20,10)
+print(result)
+
+#divide() 함수 구현
+
+def divide(a,b):
+    c = a/b
+    return c
+result = divide(10,20)
+print(result)
+
+#함수 내에서 함수 호출하는 함수 구현
+
+# Myfunc(a,b,c,d,e) = ((a + b)*(c-d))/e
+
+#1. 함수내에서 직접 연산
+def myfunc1(a, b, c, d, e):
+    if e == 0:
+        return "error"
+    f = ((a + b) * (c - d)) / e
+    print('myfunc1 called')
+    return f
+
+
+2. add/subtract/multiply.divide함수 사용
+
+
+add/subtract/multiply/divide 함수 사용
+def myfunc2(a,b,c,d,e):
+    if e == 0:
+        return "Zerodivision"
+    # f = ((a + b) * (c - d)) / e
+    f = divide(multiply(add(a,b),subtract(c,d)),e)
+    print('myfunc2 called')
+    return f
+print('-'*50)
+
+result = myfunc2(1,2,6,4,0)
+print(result)
+print('-'*50)
+result = myfunc2(10,20,60,40,10)
+
+result = myfunc1(1,2,6,4,0)
+print(result)
+
+result = myfunc1(10, 20, 60, 40, 10)
+print(result)
+
+힘수 구현 순서
+(1) def를 사용하고 함수 이름을 결정
+(2) 매개변수(인자)를 결정
+(3) 인자를 사용하여 처리하는 코드를 구현
+(4) return을 사용하여 결과값을 반환
+(5) 인자를 설정하여 함수를 호출하여 결과값을 확인
+
+함수 유형 4가지
+
+[1]반환값이 없고 매개변수(인자) 없고
+def f_1():
+    print('f_1 is called!!')
+
+f_1()
+
+#[2]반환값이 없고 매개변수(인자) 있고
+def f_2(a,b):
+    print('f_2: ',a,b,a+b,a-b,a*b,a/b)
+
+f_2(12,34)
+
+def f_22(a1 = 0,a2 = 0,a3 = 'None'):  #a3 = 'None', 기본 인자
+    print('f_22:',a1,a2,a3)
+f_22()
+f_22(1)
+f_22(10,20)
+f_22(10,20,30)
+f_22("HELL0",(1,2,3,4),(5,6,7))
+
+#[3]반환값이 있고 매개변수(인자) 없고
+def f_3():
+    print('f_3 is called!!')
+    return 'Bread','Butter',100
+
+print(f_3())
+
+
+#[4]반환값이 있고 매개변수(인자) 있고
+def f_4(a,b):
+    print('f_4 is called!!')
+    return a + b, a - b , a * b, a / b
+print(f_4(3,5))
+
+# 문제: 2개의 정수에 대해 큰 수,작은 수의 순서로 반환하는 함수를 만드세요 (함수 이름은 order())
+# 3 5 ==> 5 3
+# 5 3 ==> 5 3
+
+def order(a,b):
+    if a < b:
+       a,b = b,a
+    return a,b
+    print(order(a,b))
+
+print(order(3,5))
+print(order(50,30))
+
+#max(a,b) 함수
+def max(a,b):
+    if a > b:
+      return  a
+    return b
+    print(max(a,b))
+
+print(max(3,5))
+
+#min(a,b) 함수
+def min(a,b):
+    if a < b:
+     return a
+    return b
+    print(min(a,b))
+
+print(min(3,5))
+
+#sum(리스트) 함수
+def sum(l):
+   total = 0
+   for k in l:
+    total = total + k
+    return  total
+print(sum([1,2,3,4,5,6,7,8,9,10]))
+
+print(sum(list(range(100))))
+
+#mean(리스트) 함수
+def mean(l):
+    total = 0
+    for k in l:
+        total = total + k
+    return total/len(l)
+print(mean(list(range(100))))
+
+print('-'*50)
+#인수의 갯수가 고정되지 않은 인수 처리 방법
+def add_many(*args):
+    total = 0
+    for k in args:
+     total = total + k
+    return total
+print(add_many(10,20,30,40,50,60,70,80,90,100))
+
+#키워드 인수(사전 사용)
+
+#람다(lamda)함수
+
+print('aa',end =" ")
+print("bb")
+
+#리스트 출력
+l = [0,1,2,3,4,5,6,7,8,9,10,11]
+def printlist(title,numberPerLine,prnList):
+    count = 0
+    number = 5
+    print(title)
+    for k in l:
+        coumt = count + 1
+        print(k, end=" ")
+        if count % numberPerLine == 0:
+            print()
+title = '--성적테이블--'
+l = [0,1,2,3,4,5,6,7,8,9,10,11]
+count = 0
+number = 5
+print(title)
+for k in l:
+    coumt = count + 1
+    print(k, end=" ")
+    if count % number == 0:
+        print()
+
+# 인수의 갯수가 고정되지 않은 인수 처리 방법
+# (1)  튜플형
+def add_many(a,b,*args):
+    total = 0
+    print(type(args))
+    for k in args:
+        total = total + k
+    return total
+print(add_many(10,20,30,40,50,60,70,80,90,100))
+
+
+#키워드 인수(사전 사용)
+# (2) 사전형
+def func(width, height, **kw):
+    print(width,height)
+    print(kw)
+
+func(width=10, height=20, depth = 5, dimension = 7)
+
+함수 사용시 변수의 유효범위 규칙(scope Rule)
+LEGB 규칙: Local > EnclosingFunction Local
+          > Global(전역변수) > Built -in
+x =10  #전역변수(global variable)
+y = 11  #전역변수
+def foo():
+    x = 20     # L:지역변수  (Local variale)
+    print('foo:',x)
+    def bar():
+        a = 30        # L:지역변수  (Local variale)
+        print('bar:',a,x,y)
+    bar()
+foo()
+print('Global:',x)
+
+#주의해야할 변수 사용
+# def foo2():
+#     foo_list[0] =10
+
+
+def add(a,b):  # 함수 정의
+    c = a + b
+    return c
+
+def multiply(a,b):
+    c = a * b
+    return c
+
+def subtract(a,b):
+    c = a - b
+    return c
+def divide(a,b):
+    c = a/b
+    return c
+
+# 일급 함수(First Class Fuction)
+# (1) 함수 객체를 다른 함수의인수로 전달할 수 있다
+# (2) 함수 객체를 변환 값으로 전달할 수 있다
+# (3) 함수 객체를 다른 자료구조에 저장해서 사용 가능
+def add_two(a,b):
+    print('add_two is called')
+    return a + b
+def func_two(func,a,b):
+    print('add_two is called')
+    result = func(a,b)
+    return result
+
+result = func_two(add_two,10,20)
+print(result)
+
+def foo2():
+    print('foot2 is called!')
+    def bar2():
+        print('bar2 is called!!')
+    return bar2   #함수 객체를 반환
+result = foo2()
+print(type(result))
+result()   #bar2 is called!!   bar2()를 호출
+
+func_list = [add, subtract, multiply, divide]
+result = func_list[0](10, 50)  # add(10,50)
+print(result)
+result = func_list[1](10, 50)  # subtract(10,50)
+print(result)
+
+#람다 함수
+add_new = lambda a,b: a + b
+result = add_new(7,10)
+print(result)
+
+# def add_new(a,b):   #일반함수
+#     return  a + b
+# 함수명 = lambda <인수1>,<인수2>,...:<반환할 식>
+#함수를 정의하지 않고 필요할때 바로 함수 객체로 사용!, 바로 인수로 전달이 가능하다
+add_new =lambda a,b: a + b
+result = add_new(7,10)
+print(result)
+
+def f1(x):
+    return x*x
+def g(func):
+    return [func(x) for x in range(1,11)]
+print(g(f1))
+
+print([f1(x) for x in range(1,5)])
+print([f1(1),f1(2),f1(3),f1(4)])
+print(g(f1))
+
+print(g(lambda x : x*x +1))  #람다함수 사용
+#리스트의 출력
+def printlist(title,numberperline,prnlist):
+    count = 0
+    print(title)
+    for k in l:
+        count = count + 1
+        print(k,end=' ')
+        if count % number == 0:
+            print()
+
+
+title = '--성적테이블--'
+l = [0,1,2,3,4,5,6,7,8,9,10,11]
+number = 4
+printlist(title,number,l)
+
+
+# map() 함수
+
+def multi_two(x):
+    return x*2
+
+result = map(multi_two,[1,2,3,4,5])
+print(list(result))
+
+#abs(): 절대값을 구해주는 함수
+print(abs(-1234))    #1234
+
+# chr(수) : 아스키 코드 문자
+print(chr(97))    # ---> 'a'
+print(chr(48))    # 0
+
+
+
+#1~255 까지 아스키 코드값과 해당 문자가 출력
+# 97:a
+# 98:b
+for k in range(1,255):
+    print(k, ':', chr(k), end= ' , ')
+    if k %10 ==0:
+        print()
+#max()/min()/sum()/round()/pow()
+# ord(): 문자의 아스키 값을 반환
+# id(): 객체의 참조 주소 값을 변환
+# h2x(): 16진수로 변환
+print(list(zip([1,2,3],[5,6,7])))
+print(list(zip([1,2,3],['a','b','c'],[5,6,7])))
+
+#globals()/locals() :  전역/지역 심볼테이블을 얻는다
+# 외장함수 ==> 파이선 데이터 분석 강의중에 다룬다
+print(globals())   #{'__name__': '__main__', '__doc__': '\ndef 함수명(매개변수):\n
+# <수행할 문장1>\n    수행할 문장2>\n    ...\n    :return 반환할 값\n', '__package__': None, '__loader__':
+# <_frozen_importlib_external.SourceFileLoader object at 0x000002153F766400>, '__spec__': None 객체 모두 나오는거임!!!!!!
+
+
+last_var = 20
+last_list = [1,2,3,4]
+print(locals())   #'__name__': '__main__', '__doc__': '\ndef 함수명(매개변수):\n    <수행할 문장1>\n   ....
+
+#외장 함수
