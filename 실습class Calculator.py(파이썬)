@@ -1,0 +1,55 @@
+class Calculator:
+
+    def __init__(self):
+        self.dict = {1:'+',2:'-',3:'*',4:'/'}
+
+    def calculator(self,first,di,second):
+        self.first = first
+        set = self.dict[di]
+        self.second = second
+        return eval(self.first + set + self.second)
+
+class controlcalculator:
+    def __init__(self):
+        self.cal_dict=  Calculator()
+
+    def Calculator(self,first, b, second):
+        return self.cal_dict.calculator(first, b, second)
+
+class ViewCalculator:
+    def __init__(self):
+        self.cCal = controlcalculator()
+
+    def DisplayCalculator(self):
+        result = int(input("수 : "))
+        while True:
+            b = int(input("연산(1: '+', 2: '-', 3: '*', 4: '/', 5: 'end'): "))
+            if b >= 5 or b < 1:
+                break
+            c = input("수 : ")
+            result = self.cCal.Calculator(str(result), b, c)
+            print("결과:", result)
+
+
+
+if __name__ == '__main__':
+    viewCalculator = ViewCalculator()
+    viewCalculator.DisplayCalculator()
+
+# #class를  계산기
+# a= input('a:')
+# s = {1: '+', 2: '-', 3: '*', 4: '/'}
+# c = int(input('고르시오(1:+,2:-,3:*,4:/,0:강제종료):'))
+# if c <= 0 or c > 4:
+#     print('서비스가 강제 중지 되었습니다.')
+# else  :
+#     b= input('b:')
+#     answer=eval(a+s[c]+b)
+#     print(answer)
+#     while True:
+#         c = int(input('고르시오(1:+,2:-,3:*,4:/,0:종료):'))
+#         if c <= 0 or c > 4:
+#             break
+#         b = input('alpha:')
+#         answer = eval(str(answer)+ s[c] + b)
+#         print(answer)
