@@ -1,0 +1,202 @@
+#02-2_문자열.py
+"""
+문자열 자료형: imutable 불변형 자료
+2019.07.02  #주성분 여러줄 다는 방법: ''' '''
+"""
+
+
+
+a = " Python is Great!"
+print(a)
+b ='Life is Short, You need Python'
+print(b)
+c = " He said ' I love you' "
+print(c)
+d = 'He said "I love you"'
+print(d)
+
+# d = "He said "I love you"'
+
+f =  '''
+Hello
+python
+'''
+
+print(f)
+
+f =  """
+Hello
+python!!!!
+"""
+print(f)
+
+#문자열의 indexing 과 slicing
+
+#인덱싱
+
+a ='Life is too short, You need Python'
+
+print(a[0], a[1], a[2], a[8])
+# a[0]= 'l' #불변형 자료형이므로 요소 수정이 불가
+# TypeError: 'str' object does not support item assignment
+
+print(a[-1], a[-2], a[-3], a[-10])  #뒤에서부터 인덱싱
+
+#슬라이싱: a[시작옵셋:(끝옵셋 +1) ]
+
+print(a[0:3]) #From 0 to (3-1)
+print(a[0:4]) #From 0 to (4-1)
+print(a[0:11]) #From 0 to 10
+
+print(a[12:17]) #"short"
+print(a[12: ])  #"short you need python
+
+print(a[:]) #From 0 to 33
+
+
+print(a[:-1])
+b = a[0] + a[1] + a[2] + a[3]
+print(b)
+
+print(a[12:-1])  #"short, You need Pytho"
+
+print(a[-11:-7])  #need
+
+print(a)
+
+#a[시작옵셋:(끝옵셋 +1): 간격(step)]
+
+print(a[0:30:3])
+print(a[::2])
+print(a[::-1])  #거꾸로 인덱싱 nohtyP deen uoY ,trohs oot si efiL
+print(a[::-2])
+
+a = "20010331Rainy"
+
+date = a[0:8]
+weather = a[8: ]
+year = a[0:4]
+
+print(date)
+print(weather)
+print(year)
+
+a = "Pithon"
+# a[1] ="y"
+
+b = a[:1] + 'y' +a[2:]
+print(b)
+
+# 문자열 연산 :<class 'str'> 의 method (매서드)
+s1 = 'first'
+s2 = 'second'
+s3 = s1 + s2
+print(s3)
+
+print(len(s3))
+
+a = "i like programming. i like swimming"
+print(type(a))  #<class 'str'>
+
+b= a.upper()  #대문자로
+
+print(b)
+print(a)      #원본은 그대로 유지
+
+c= b.lower()  #대문자로
+print(c)
+
+d = c.title()  #단어의 첫글자만 대문자로
+print(d)
+
+num = a.count('like') #like의 사용횟수
+print(num)  #2
+
+num = a.find('like')  #문자의 위치
+print(num)
+
+num = a.find('hello')  #없으면  -1을 변환
+print(num)
+
+num = a.find('like', 3)  #검색 시작위치를 3으로 지정
+print(num)
+
+num = a.rfind('like')  #역순 검색, 뒤에서 부터 검색
+print(num)
+
+# num = a.index('hello')  #위치를 변환
+
+b = a.startswith('i like') # i like 로 시작하는 문자열
+print(b)
+
+a = ' spam and ham '
+s = a.strip()  # 좌우 공백을 제거
+print(s)
+
+s = a.lstrip() #왼쪽 공백을 제거
+print(s)
+
+s = a.rstrip() #오른쪽 공백을 제거
+print(s)
+
+s1 = a.split()  #공백으로 공백으로 분리하고 리스트로 반환
+print(s1)  #['spam', 'and', 'ham']
+
+s = a.split('and')  #and로 공백으로 분리하고 리스트로 반환
+print(s)  #[' spam ', ' ham ']
+
+
+s2 = ':'.join(s1)   #문자를 삽입
+print(s2)  #spam:and:ham
+
+a = 'abcdefg'
+s2 = ':'.join(a)
+print(s2)   #a:b:c:d:e:f:g
+
+a = 'Life is too short'
+b = a.replace('Life','Your leg')
+print(b)
+
+#eval() : 문자열로 표현된 식(expression)을 파이선 인터프리터가 번역하여 실행시킨다
+# 숫자를 숫자로, 문자를 문자로 알아서 처리해줌
+
+a = 10
+b =20
+# c = a + b
+
+c = eval('a + b')
+print(c)
+
+velocity = input( 'Input velocity : ' )
+distance = input( 'Input distance : ' )
+
+time = eval( distance + '/' + velocity )
+print(time)
+
+#byte :0 ~255(0xFF)
+
+# a = b"Python rules"
+# print(a,type(a))
+# s = a.decode('utf-8')
+# print(s.type(s))
+# b2 = s.encode('utf-8')
+# print(b2,type(b2))
+
+# maketrans()/ translate()함수 :
+# 문자열을 mapping하여 변환한 결과를 얻울 수 있다
+
+a = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅔㅣㅗㅜ'  #굳이 안나눠도 된다
+b = 'ㅏㅔㅣㅗㅜ'
+c = 'gndrmbsojcktphaeiou'
+d = 'aeiou'
+kor = a + b
+eng = c + d
+transtable = ''.maketrans(a,c)
+print(type(transtable))  #<class 'dict'>
+
+result = 'ㄱㅏㄴㅣㅂㅏㅂㅗ'.translate(transtable)
+print(result)
+print(len(a),len(b))
+
+a = "Hello"
+print(a*5)
