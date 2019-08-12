@@ -1,0 +1,60 @@
+#1
+
+class Product:
+    def __init__(self):
+        self.product_name = 0
+        self.product_unit = 0
+
+    def product_info(self):
+        f=open('items.txt','w')
+        a = input("pro_name: ")
+        b = input("pro_unit: ")
+        self.product_name = a
+        self.product_unit = b
+        f.write(self.product_name+ " " +self.product_unit+ "\n")
+        f.close()
+        return f
+
+class Information:
+    def __init__(self):
+        self.product_name = 0
+        self.product_sell = 0
+
+    def sell_info(self):
+        f = open('items_2.txt', 'a')
+        self.product_name = input("pro_name: ")
+        self.product_sell = input("sell_amount: ")
+        f.write(self.product_name + " "+ self.product_sell + "\n")
+        return f.close()
+
+class Table:
+
+    def __init__(self):
+        self.info = Information()
+        self.prod = Product()
+
+    def table(self):
+        a = self.info.product_name
+        b = self.prod.product_unit
+        c = self.info.product_sell
+        d = b * c
+        return ('1번', a, '2번', b, '3번', c, '4번', d)
+
+    while True:
+        menu = int(input("선택하쇼(1:품목정보등록, 2:판매정보등록, 3:판매현황표출력,0:종료): "))
+        if menu == 0:
+            break
+        elif menu == 1:
+            expr_product = Product()
+            expr_product.product_info()
+            print()
+
+        elif menu == 2:
+            expr_information = Information()
+            expr_information.sell_info()
+            print()
+
+        elif menu == 3:
+            expr_information = Table()
+            expr_information.()
+            print()
