@@ -1,0 +1,129 @@
+#
+class Car:
+    wheel = 4
+    side_mirror = 2
+    back_mirror = 1
+    handle = 1
+
+    def __init__(self,name='소나타 ',drv='전륜',speed=0,direction='앞쪽',fuel='휘발유',state='정상'):
+        print('생성자 호출')
+        self.name = name
+        self.drv = drv
+        self.speed = speed
+        self.direction = direction
+        self.fuel = fuel
+        self.state = state
+
+    def set_name(self,name):
+        self.name = name
+        print( '차종이 [', self.name ,'] 변경되었습니다')
+
+    def get_name(self):
+        return  self.name
+
+    def set_drv(self, drv):
+        self.drv = drv
+        print('차의 구동 방식이 [', self.drv, '] 으로 변경 되었습니다')
+    def get_drv(self):
+        return self.drv
+
+    def set_speed(self, speed):
+        self.speed = speed
+        print('자동차의 속력이 시속  [', self.speed, '] km 로 변경되었습니다')
+    def get_speed(self):
+        return self.speed
+
+    def set_direction(self, direction):
+        self.direction = direction
+        print('차의 방향이 [', self.direction, '] 으로 변경 되었습니다')
+
+    def get_direction(self):
+        return self.direction
+
+    def set_fuel(self, fuel):
+        self.fuel = fuel
+        print('설정된 연료 방식 [', self.fuel, '] 으로 변경되었습니다')
+    def get_fuel(self):
+        return self.fuel
+
+    def set_state(self, state):
+        self.state = state
+        print('설정된 차의 상태 [', self.state, '] 으로 변경 되었습니다')
+    def get_state(self):
+        return self.state
+
+    def turn(self):
+        return ('자동차의 방향이  [', self.direction, '] 으로 변경 되었습니다')
+
+    def stop(self):
+        if self.direction == '정지':
+            return ('자동차가 정지했습니다.')
+
+    def start(self):
+        return('자동차가 시동이 걸렸습니다.')
+
+    def move_forward(self):
+        return ('자동차가  [', self.direction,'] 합니다 속도는 [',self.speed,'] 입니다.')
+
+    def move_backward(self):
+        return ('자동차가  [', self.direction,'] 합니다 속도는 [',self.speed,'] 입니다.')
+
+
+
+
+# 필기
+
+# (1) 인스턴스 초깃값 인자 설정을 한번에 한 경우 -> 바로 출력가능
+#     def __init__(self,name='소나타 ',drv='전륜',speed=0,direction='앞쪽',fuel='휘발유',state='정상'):
+#         print('생성자 호출')
+#         self.name = name
+#         self.drv = drv
+#         self.speed = speed
+#         self.direction = direction
+#         self.fuel = fuel
+#         self.state = state
+
+
+
+# (2) 인스턴스 초깃값의 설정을 따로 밑에 한경우  ->set함수로 이름을 설정한뒤 출력
+ # def __init__(self):
+#         print('생성자 호출')
+#         self.name = '소나타'
+#         self.drv = '전륜'
+#         self.speed = 0
+#         self.direction = '앞쪽'
+#         self.fuel = '휘발류'
+#         self.state = '정상'
+
+# if __name__ == '__main__':
+#     Jinyoung = Car('JEEP', '4륜', 200, '뒷쪽')
+#     print('진영이의 차는', Jinyoung.name)
+#     Kiyoung = Car()
+#     Kiyoung.set_name("마세라띠")
+#     print('기용이의 차는' ,Kiyoung.name)
+#     print(Jinyoung.start())
+#     print(Jinyoung.stop())
+#
+#     Jinyoung = Car('포르쉐', fuel= '휘발유')
+#     print(Jinyoung.fuel)   #질문
+#     print(Jinyoung.move_backward())
+#
+#     Jin = Car(direction='정지')
+#     print(Jin.stop())
+
+# Jinyoung = Car()
+# while True:
+#     a = str(input("방향 = "))
+#     list = ['왼쪽','오른쪽','앞쪽','뒤쪽','정지']
+#     number = 0
+#     for x in list:
+#         if x == a:
+#             break
+# Jinyoung.set_direction(a)
+
+Jinyoung = Car()
+print(Jinyoung.name)
+
+
+
+
