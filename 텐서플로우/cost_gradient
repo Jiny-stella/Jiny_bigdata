@@ -1,0 +1,66 @@
+import matplotlib.pyplot as plt
+
+def cost(x,y,w) :
+    c = 0
+    for i in range(len(x)) :
+        hx = w * x[i]
+        loss = (hx - y[i])**2
+        c += loss
+    return c / len(x)
+
+def not_used() :
+    x = [1,2,3]
+    y = [1,2,3]
+    # y = [2,4,6]
+    print(cost(x,y,-1))
+    print(cost(x,y,0))
+    print(cost(x,y,1)) # w = 1
+    print(cost(x,y,2)) # w = 2
+    print(cost(x,y,3))
+
+    for i in range(-30,50) :
+        w = i/10
+        c = cost(x,y,w)
+
+        print(w,c)
+        plt.plot(w,c,'ro')
+
+    plt.show()
+#not_used()
+# 미분 : 순간 변화량, 기울기
+#       x축으로 1만큼 움직였을 때 y축으로 움직인 거리
+#  y = 3     --> y' = 0
+#  y = 2x    --> y' = 2
+#  y = x^2   --> y' = 2x
+#  y = (x+1)^2   --> y' = 2(x+1)
+
+
+def gradient_descent(x,y,w):
+    c = 0
+    for i in range(len(x)) :
+        hx = w * x[i]
+        loss = (hx - y[i])*x[i]
+        c += loss
+    return c / len(x)
+
+# train
+x = [1,2,3]
+y = [1,2,3]
+
+w, old = 10, 100
+for i in range(100):
+    c = cost(x,y,w)
+    grad = gradient_descent(x,y,w)
+    w -= 0.1*grad  # 0.1 : learning rate,hyper parameter
+
+    print(i,c,old,w,grad)
+    if c >= old and abs(c - old) < 1.0e-15:
+        break
+    old = c
+
+print('weight =',w)
+
+# predict : x=5, x =11
+print('x = 5, H(x) :' , w*5)
+print('x = 11, H(x) :', w*11)
+
