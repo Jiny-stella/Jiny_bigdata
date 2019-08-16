@@ -1,0 +1,16 @@
+설치방법 
+http://webnautes.tistory.com/1173
+
+* 개발환경 구축
+
+1. python 인터프리터 설치 : 3.6.0 버전(혹은 3.5.2)
+     https://www.python.org/
+     Add Python 3.6 to PATH 옵션 을 반드시 체크
+
+2. Pycharm 통합 개발환경 설치 : 최신 버전
+    https://www.jetbrains.com/pycharm/download/#section=windows
+    Community 버전 다운로드
+    vc_redist.x64.exe: Microsoft Visual C++ 2015 Redistributable(x64)을
+    추가
+
+3. tensorflow 라이브러리(패키지) 설치 : 1.5.1 
