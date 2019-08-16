@@ -1,0 +1,10 @@
+* 8일차 오전 실습 과제
+
+[1]  7일차 과제 softmax_iris.py 를 수정하여
+     5단 neural network, xavier initializer,dropout을
+     구현하여 구버전과 정확도를 비교해보세요    
+
+[2]  5일차 xor_nn.py 를 수정하여 back propagation을
+     직접 구현하고 실행시켜보세요
+     diff = (y_pred - Y)/(y_pred*(1.0 - y_pred) + 1e-7)
+
